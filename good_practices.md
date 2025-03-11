@@ -105,7 +105,7 @@ void Greeter::sayHello() {
 }
 ```
 
-![inline_method](../assets/inline_method.png)
+![inline_method](assets/inline_method.png)
 
 
 ---
