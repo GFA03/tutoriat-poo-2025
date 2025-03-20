@@ -37,7 +37,7 @@ class Calculator {
 int Calculator::counter_id = 1;                                 // Static attributes ARE ALWAYS initialized OUTSIDE the class
 
 Calculator::Calculator():id(counter_id++){                      // 'const attributes SHOULD be initialized in the INITIALIZATION LIST
-    this->procesor = "unknown";                                 // We can put all the attirbutes in the list
+    this->procesor = "unknown";                                 // We can put all the attributes in the list
     this->placa_video = true;                                   // We list them below for readability
     this->ram = 8;                                              // 'this->' is not mandatory
     cout<<"Fara parametri\n";
@@ -54,7 +54,7 @@ Calculator::Calculator(string procesor, bool placa_video, int ram):id(counter_id
     this->procesor = procesor;                                  // NOTE: Here 'this->' solved the ambiguity between params and attributes
     this->placa_video = placa_video;                            // You can use '_procesor'  or some other name to differentiate them
     this->ram = ram;                                            // We personally use this convension
-    cout<<"Altu cu parametri\n";                                // BUT BE CONSECVENT, use only one convention for all Constructors !!!
+    cout<<"Altu cu parametri\n";                                // BUT BE CONSISTENT, use only one convention for all Constructors !!!
 }
 
 Calculator::Calculator(const Calculator& obj):id(counter_id++){
