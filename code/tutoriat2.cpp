@@ -52,10 +52,11 @@ Calculator::Calculator(string procesor):id(counter_id++){       // We can put an
 
 Calculator::Calculator(string procesor, bool placa_video, int ram):id(counter_id++){
     this->procesor = procesor;                                  // NOTE: Here 'this->' solved the ambiguity between params and attributes
-    this->placa_video = placa_video;                            // You can use '_procesor'  or some other name to differentiate them
+    this->placa_video = placa_video;                            // You can use 'procesor_'  or some other name to differentiate them
     this->ram = ram;                                            // We personally use this convension
     cout<<"Altu cu parametri\n";                                // BUT BE CONSISTENT, use only one convention for all Constructors !!!
-}
+}                                                               // NOTE: In python we use _function, _attribute to denote that it's private
+                                                                // NOTE: Variables with the prefix '_' or '__' are reserved to the system
 
 Calculator::Calculator(const Calculator& obj):id(counter_id++){
     this->procesor = obj.procesor;
