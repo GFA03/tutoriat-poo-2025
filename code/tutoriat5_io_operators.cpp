@@ -9,7 +9,7 @@ private:
     static int counter_id;
     const int id = counter_id;
     string procesor;
-    char* versiune;             // New attribute
+    char* versiune;             
     int ram;
     bool placa_video;
 
