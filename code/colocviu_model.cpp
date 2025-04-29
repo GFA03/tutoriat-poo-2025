@@ -39,7 +39,7 @@ public:
         return os;
     }
 
-
+    virtual const int getInitialCost() const = 0;
     virtual const int getCostUpgrade() const = 0;
     virtual void upgrade() = 0;
 };
@@ -62,6 +62,10 @@ public:
     friend ostream& operator<<(ostream& os, const Zid& zid) {
         zid.print(os);
         return os;
+    }
+
+    const int getInitialCost() const {
+        return 300;
     }
 
     const int getCostUpgrade() const{
@@ -93,6 +97,10 @@ public:
     friend ostream& operator<<(ostream& os, const Turn& turn) {
         turn.print(os);
         return os;
+    }
+
+    const int getInitialCost() const {
+        return 500;
     }
 
     const int getCostUpgrade() const{
@@ -146,6 +154,10 @@ public:
         return os;
     }
 
+    const int getInitialCost() const {
+        return 100;
+    }
+
     const int getCostUpgrade() const{ 
         return 50 * autonomie;
     }
@@ -176,6 +188,10 @@ public:
         return os;
     }
 
+    const int getInitialCost() const {
+        return 50;
+    }
+
     const int getCostUpgrade() const{
         return 10 * nrGloante;
     }
@@ -196,10 +212,6 @@ RobotTerestru::RobotTerestru():Robot() {
 
 class Inventar{
 private:
-    const int PUNCTE_TURN = 500;
-    const int PUNCTE_ZID = 300;
-    const int PUNCTE_ROBOT_TERESTRU = 50;
-    const int PUNCTE_ROBOT_AERIAN = 100;
     const int PUNCTE_VANZARE = 500;
 
     static Inventar* instance;
@@ -246,25 +258,13 @@ Inventar::~Inventar(){
 
 void Inventar::adaugaItem(Item *item) {
 
-    int tempPuncte = this->puncte;
+    int cost = item->getInitialCost();
 
-    if (dynamic_cast<RobotTerestru*>(item))
-        this->puncte -= PUNCTE_ROBOT_TERESTRU;
-
-    if (dynamic_cast<RobotAerian*>(item))
-        this->puncte -= PUNCTE_ROBOT_AERIAN;
-
-    if (dynamic_cast<Zid*>(item))
-        this->puncte -= PUNCTE_ZID;
-
-    if (dynamic_cast<Turn*>(item))
-        this->puncte -= PUNCTE_TURN;
-
-    if(this->puncte < 0){
-        this->puncte = tempPuncte;
+    if(this->puncte < cost) {
         throw InsufficientPointsException();
     }
 
+    this->puncte -= cost;
     this->items.push_back(item);
 }
 
