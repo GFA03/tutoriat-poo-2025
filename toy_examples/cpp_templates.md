@@ -28,7 +28,7 @@ using namespace std;
 
 template <typename T>
 T add(T a, T b) {
-    return (a > b) ? a : b;
+    return a + b;
 }
 
 int main() {
@@ -48,6 +48,8 @@ template <typename T, typename Y>
 T add1(Y a, T b) {
     return a + b;
 }
+
+template <typename T, typename Y>
 Y add2(Y a, T b) {
     return a + b;
 }
